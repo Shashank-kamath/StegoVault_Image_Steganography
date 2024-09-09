@@ -97,3 +97,47 @@ img {
 .result a:hover {
     background: #ffc107;
 }
+
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Button styling */
+.btn {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-download {
+    background-color: #28a745;
+}
+
+.btn-download:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
+
+/* Home Button Specific */
+.btn-home {
+    background-color: #007bff;
+}
+
+.btn-home:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Button Focus State */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
+}

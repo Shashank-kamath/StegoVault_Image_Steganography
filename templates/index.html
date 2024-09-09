@@ -11,7 +11,7 @@
         <form action="{{ url_for('encode') }}" method="POST" enctype="multipart/form-data">
             <h2>Encode Message</h2>
             <label for="image">Select Image:</label>
-            <input type="file" name="image" id="image" required><br><br>
+            <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required><br><br>
             <label for="message">Enter Message:</label>
             <textarea name="message" id="message" required></textarea><br><br>
             <button type="submit">Encode</button>
