@@ -17,7 +17,7 @@ def encode_image(image_path, message, output_path):
     message += '#####'  # Delimiter to mark end of message
 
     binary_message = ''.join(format(ord(char), '08b') for char in message)
-    binary_message += '00000000'  # Add null terminator to the end
+    binary_message += '00000000'  # Adding null terminator to the end
 
     message_index = 0
     for row in range(height):
