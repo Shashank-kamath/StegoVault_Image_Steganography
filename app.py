@@ -10,11 +10,18 @@ app.config['ENCODED_FOLDER'] = 'encoded/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['ENCODED_FOLDER'], exist_ok=True)
 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+# Helper function to check for allowed image extensions
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 def encode_image(image_path, message, output_path):
-    image = Image.open(image_path)
+    # Open the image in RGB mode to ensure consistent handling of JPEGs
+    image = Image.open(image_path).convert('RGB')
     encoded_image = image.copy()
     width, height = image.size
-    message += '#####'  # Delimiter to mark end of message
+    message += '#####'  # Delimiter to mark the end of the message
 
     binary_message = ''.join(format(ord(char), '08b') for char in message)
     binary_message += '00000000'  # Adding null terminator to the end
@@ -28,10 +35,13 @@ def encode_image(image_path, message, output_path):
                     pixel[n] = pixel[n] & 254 | int(binary_message[message_index])
                     message_index += 1
             encoded_image.putpixel((col, row), tuple(pixel))
-    encoded_image.save(output_path)
+    
+    # Save encoded image as PNG (lossless) for accurate retrieval
+    encoded_image.save(output_path, 'PNG')
 
 def decode_image(image_path):
-    image = Image.open(image_path)
+    # Open the image in RGB mode to ensure JPEGs are handled as uncompressed
+    image = Image.open(image_path).convert('RGB')
     width, height = image.size
     binary_message = []
     for row in range(height):
@@ -56,16 +66,16 @@ def encode():
     file = request.files['image']
     message = request.form['message']
 
-    if file.filename == '':
+    if file.filename == '' or not allowed_file(file.filename):
         return redirect(url_for('index'))
 
     input_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(input_path)
 
-    output_path = os.path.join(app.config['ENCODED_FOLDER'], 'encoded_' + file.filename)
+    output_path = os.path.join(app.config['ENCODED_FOLDER'], 'encoded_' + os.path.splitext(file.filename)[0] + '.png')
     encode_image(input_path, message, output_path)
 
-    return redirect(url_for('encoded_image', filename='encoded_' + file.filename))
+    return redirect(url_for('encoded_image', filename='encoded_' + os.path.splitext(file.filename)[0] + '.png'))
 
 @app.route('/decode', methods=['POST'])
 def decode():
@@ -74,7 +84,7 @@ def decode():
 
     file = request.files['image']
 
-    if file.filename == '':
+    if file.filename == '' or not allowed_file(file.filename):
         return redirect(url_for('index'))
 
     input_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
