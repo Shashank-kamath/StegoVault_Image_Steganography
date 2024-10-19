@@ -211,14 +211,34 @@ textarea {
     box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
-    .box-container {
-        flex-direction: column;
+    /* Adjust layout for tablets */
+    .container {
+       width: 100%;
+       padding: 10px;
     }
-
-    .box {
-        width: 100%;
-        margin-bottom: 20px;
+ 
+    .image-upload, .steganography-form {
+       width: 100%;
     }
-}
+ 
+    button {
+       width: 100%;
+       font-size: 16px;
+    }
+ }
+ 
+ @media (max-width: 480px) {
+    /* Adjust layout for mobile devices */
+    .container {
+       padding: 5px;
+    }
+ 
+    .image-upload, .steganography-form {
+       width: 100%;
+    }
+ 
+    h1, h2 {
+       font-size: 18px;
+    }
+ }
