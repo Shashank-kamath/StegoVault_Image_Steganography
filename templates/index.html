@@ -7,22 +7,30 @@
 </head>
 <body>
     <h1>StegoVault : Image Steganography Encoder and Decoder</h1>
-    <div class="container">
-        <form action="{{ url_for('encode') }}" method="POST" enctype="multipart/form-data">
-            <h2>Encode Message</h2>
-            <label for="image">Select Image:</label>
-            <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required><br><br>
-            <label for="message">Enter Message:</label>
-            <textarea name="message" id="message" required></textarea><br><br>
-            <button type="submit">Encode</button>
-        </form>
 
-        <form action="{{ url_for('decode') }}" method="POST" enctype="multipart/form-data">
-            <h2>Decode Message</h2>
-            <label for="image">Select Image:</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" required><br><br>
-            <button type="submit">Decode</button>
-        </form>
+    <!-- Box container to separate the forms -->
+    <div class="box-container">
+        <!-- Encode Form -->
+        <div class="box encode-box">
+            <form action="{{ url_for('encode') }}" method="POST" enctype="multipart/form-data">
+                <h2>Encode Message</h2>
+                <label for="image">Select Image:</label>
+                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required><br><br>
+                <label for="message">Enter Message:</label>
+                <textarea name="message" id="message" required></textarea><br><br>
+                <button type="submit" class="btn">Encode</button>
+            </form>
+        </div>
+
+        <!-- Decode Form -->
+        <div class="box decode-box">
+            <form action="{{ url_for('decode') }}" method="POST" enctype="multipart/form-data">
+                <h2>Decode Message</h2>
+                <label for="image">Select Image:</label>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" required><br><br>
+                <button type="submit" class="btn">Decode</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
