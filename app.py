@@ -6,18 +6,17 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['ENCODED_FOLDER'] = 'encoded/'
 
-# Ensure the directories exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['ENCODED_FOLDER'], exist_ok=True)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-# Helper function to check for allowed image extensions
 def allowed_file(filename):
+
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def encode_image(image_path, message, output_path):
-    # Open the image in RGB mode to ensure consistent handling of JPEGs
+
     image = Image.open(image_path).convert('RGB')
     encoded_image = image.copy()
     width, height = image.size
@@ -36,11 +35,10 @@ def encode_image(image_path, message, output_path):
                     message_index += 1
             encoded_image.putpixel((col, row), tuple(pixel))
     
-    # Save encoded image as PNG (lossless) for accurate retrieval
     encoded_image.save(output_path, 'PNG')
 
 def decode_image(image_path):
-    # Open the image in RGB mode to ensure JPEGs are handled as uncompressed
+    
     image = Image.open(image_path).convert('RGB')
     width, height = image.size
     binary_message = []
@@ -79,6 +77,7 @@ def encode():
 
 @app.route('/decode', methods=['POST'])
 def decode():
+    
     if 'image' not in request.files:
         return redirect(url_for('index'))
 

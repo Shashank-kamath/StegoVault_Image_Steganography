@@ -9,9 +9,8 @@
 <body>
     <h1>StegoVault : Image Steganography Encoder and Decoder</h1>
 
-    <!-- Box container to separate the forms -->
     <div class="box-container">
-        <!-- Encode Form -->
+
         <div class="box encode-box">
             <form action="{{ url_for('encode') }}" method="POST" enctype="multipart/form-data">
                 <h2>Encode Message</h2>
@@ -23,7 +22,6 @@
             </form>
         </div>
 
-        <!-- Decode Form -->
         <div class="box decode-box">
             <form action="{{ url_for('decode') }}" method="POST" enctype="multipart/form-data">
                 <h2>Decode Message</h2>
