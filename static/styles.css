@@ -6,7 +6,7 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.7; /* Adjust opacity for better readability of foreground content */
+    opacity: 0.5; /* Adjust opacity for better readability of foreground content */
 }
 
 /* Rest of your CSS for content */
