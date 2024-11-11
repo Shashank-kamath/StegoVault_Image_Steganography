@@ -1,3 +1,29 @@
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.7; /* Adjust opacity for better readability of foreground content */
+}
+
+/* Rest of your CSS for content */
+body, h1 {
+    color: #fff; /* Make sure text is visible over the video */
+}
+
+/* Container styling to position content over the video */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Background for readability */
+    border-radius: 10px;
+    text-align: center;
+}
+
 /* General Styling */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
