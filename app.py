@@ -50,7 +50,11 @@ def decode_image(image_path):
     binary_message = ''.join(str(bit) for bit in binary_message)
     byte_array = [binary_message[i:i+8] for i in range(0, len(binary_message), 8)]
     decoded_message = ''.join(chr(int(byte, 2)) for byte in byte_array)
-    return decoded_message.split('#####')[0]
+    
+    if '#####' in decoded_message:
+        return decoded_message.split('#####')[0]
+    else:
+        return "Nothing to decode here"
 
 @app.route('/')
 def index():
