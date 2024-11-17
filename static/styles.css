@@ -6,25 +6,22 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.5; /* Adjust opacity for better readability of foreground content */
+    opacity: 0.5; 
 }
 
-/* Rest of your CSS for content */
 body, h1 {
-    color: #fff; /* Make sure text is visible over the video */
+    color: #fff; 
 }
 
-/* Container styling to position content over the video */
 .container {
     position: relative;
     z-index: 1;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Background for readability */
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     text-align: center;
 }
 
-/* General Styling */
 body {
     font-family: "Audiowide", sans-serif; 
     margin: 0;
@@ -107,7 +104,6 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Additional Styling for Result Page */
 .result a {
     display: inline-block;
     margin-top: 20px;
@@ -128,7 +124,6 @@ img {
     padding: 50px;
 }
 
-/* Box container for encode and decode */
 .box-container {
     display: flex;
     justify-content: space-between;
@@ -168,7 +163,6 @@ img {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Form styles inside the boxes */
 form {
     display: flex;
     flex-direction: column;
@@ -195,7 +189,6 @@ textarea {
     resize: vertical;
 }
 
-/* Button styling */
 .btn {
     padding: 10px 20px;
     background-color: #d9a424;
@@ -204,15 +197,16 @@ textarea {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .btn:hover {
     background-color: #555;
 }
 
-/* Button download */
 .btn-download {
     background-color: #28a745;
+    margin-right: 40px;
 }
 
 .btn-download:hover {
@@ -220,7 +214,6 @@ textarea {
     transform: translateY(-3px);
 }
 
-/* Home button */
 .btn-home {
     background-color: #007bff;
 }
@@ -230,14 +223,12 @@ textarea {
     transform: translateY(-3px);
 }
 
-/* Button Focus State */
 .btn:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
 }
 
 @media (max-width: 768px) {
-    /* Adjust layout for tablets */
     .container {
        width: 100%;
        padding: 10px;
@@ -254,7 +245,6 @@ textarea {
  }
  
  @media (max-width: 480px) {
-    /* Adjust layout for mobile devices */
     .container {
        padding: 5px;
     }
