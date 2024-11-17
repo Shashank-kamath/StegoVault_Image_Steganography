@@ -54,7 +54,7 @@ def decode_image(image_path):
     if '#####' in decoded_message:
         return decoded_message.split('#####')[0]
     else:
-        return "Nothing to decode here"
+        return "Oops! Nothing to decode here"
 
 @app.route('/')
 def index():
